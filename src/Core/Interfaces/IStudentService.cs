@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Core.Interfaces
 {
-    public interface ITeacherService
+    public interface IStudentService
     {
-        public IList<Teacher> Get();
+        public Task<IList<Student>> GetAll();
     }
 }

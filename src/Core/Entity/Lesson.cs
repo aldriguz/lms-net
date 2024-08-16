@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Models
+namespace Core.Entity
 {
-    public class Teacher
+    public class Lesson
     {
-        public string Name { get; set; }
-
+        public string Title { get; set; }
     }
 }
