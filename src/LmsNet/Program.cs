@@ -1,3 +1,7 @@
+using Core.Interfaces;
+using Core.Repositories;
+using Core.Services;
+using Infraestructure.Repositories;
 using LmsNet.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +17,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
+builder.Services.AddTransient<IStudentService, StudentService>();
+builder.Services.AddTransient<IStudentRepository, StudentRepository>();
 
 var app = builder.Build();
 

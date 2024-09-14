@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Core.Entity;
-using LmsNet.Data;
+using Core.Interfaces;
 
 namespace LmsNet.Pages.Students
 {
     public class CreateModel : PageModel
     {
-        private readonly LmsNet.Data.ApplicationDbContext _context;
+        private readonly IStudentService _studentService;
 
-        public CreateModel(LmsNet.Data.ApplicationDbContext context)
+        public CreateModel(IStudentService studentService)
         {
-            _context = context;
+            _studentService = studentService;
         }
 
         public IActionResult OnGet()
@@ -35,8 +30,7 @@ namespace LmsNet.Pages.Students
                 return Page();
             }
 
-            _context.Students.Add(Student);
-            await _context.SaveChangesAsync();
+            await _studentService.Create(Student);
 
             return RedirectToPage("./Index");
         }

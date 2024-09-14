@@ -16,32 +16,32 @@ namespace Infraestructure.Repositories
 
         public async Task Add(Student entity)
         {
-            throw new NotImplementedException();
+            await _context.Students.AddAsync(entity);
         }
 
         public async Task<IEnumerable<Student>> GetAll()
         {
-            return await _context.Students.ToListAsync();
+            return await _context.Students.AsNoTracking().ToListAsync();
         }
 
         public async Task<Student> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Students.AsNoTracking().FirstAsync(x => x.Id == id);
         }
 
-        public async Task Remove(Student entity)
+        public void Remove(Student entity)
         {
-            throw new NotImplementedException();
+            _context.Students.Remove(entity);
         }
 
-        public async Task Save(Student entity)
+        public async Task<bool> Save()
         {
-            throw new NotImplementedException();
+            return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task Update(Student entity)
+        public void Update(Student entity)
         {
-            throw new NotImplementedException();
+            _context.Update(entity);
         }
     }
 }
