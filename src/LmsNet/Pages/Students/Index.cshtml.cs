@@ -20,7 +20,7 @@ namespace LmsNet.Pages.Students
             _studentService = studentService;
         }
 
-        public IEnumerable<Student> Student { get;set; } = default!;
+        public IReadOnlyList<Student> Student { get;set; } = default!;
 
         public async Task OnGetAsync()
         {

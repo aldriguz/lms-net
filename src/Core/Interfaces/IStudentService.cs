@@ -9,7 +9,7 @@ namespace Core.Interfaces
 {
     public interface IStudentService
     {
-        public Task<IEnumerable<Student>> GetAll();
+        public Task<IReadOnlyList<Student>> GetAll();
 
         public Task Create(Student student);
 
